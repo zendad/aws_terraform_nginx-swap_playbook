@@ -1,0 +1,10 @@
+---
+- name: Install Nginx and Configure swap space
+  hosts: webservers
+  remote_user: root
+  # remote_user: user
+  # sudo: yes
+
+  roles:
+    - nginx
+    - swapspace
