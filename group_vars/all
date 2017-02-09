@@ -1,12 +1,12 @@
 ---
-# Variables listed here are applicable to all host groups
-wp_version: 4.6
-wp_sha256sum: c1856cf969b1e73025ba2c681491908c3a4a6c5a2333f4531bf9bfb90f634380
-
-# This is used for the nginx server configuration, but access to the
-# WordPress site is not restricted by a named host.
+# This is used for the nginx server configuration.
 nginx_port: 80
 server_hostname: web1.dereck.com
+nginx_user: nginx
+nginx_worker_processes: auto
+nginx_events_worker_connections: 1024
+nginx_worker_rlimit_nofile: 10000
+
 
 # Disable All Updates
 # By default automatic updates are enabled, set this value to true to disable all automatic updates
@@ -18,6 +18,11 @@ auto_up_disable: false
 # minor = Minor updates are enabled, development, and major updates are disabled
 core_update_level: true
 
-swap_file_path: /mnt/swapfile
-swap_file_size: 1G
+## Swap components
+swapfile_location: /swapfile
+swap_file_path: /swapfile
+count_size: 1048576
 swappiness: 1
+
+
+

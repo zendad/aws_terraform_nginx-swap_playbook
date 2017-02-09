@@ -12,7 +12,7 @@
     - swap.file.check
 
 - name: Create swap file
-  command: fallocate -l {{swap_file_size}} {{swap_file}}
+  command: dd if=/dev/zero of={{ swapfile_location }} bs=1024 count={{ count_size }}
   when: not swap_file_check.stat.exists
   tags:
     - swap.file.create

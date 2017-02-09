@@ -16,7 +16,7 @@
     - '/etc/nginx/sites-enabled/default'
     - '/etc/nginx/sites-available/default'
   notify:
-    - Test nginx and reload
+    - restart nginx
 
 
 - name: Make sure the sites-available, sites-enabled and conf.d directories exist
@@ -36,19 +36,19 @@
 - name: Set up the nginx default site configuration file
   template: src=default.conf dest=/etc/nginx/sites-available/default.conf
   notify:
-   - reload nginx
+   - restart nginx
 
 
 - name: Enable the nginx default site
   file: path=/etc/nginx/sites-enabled/default.conf state=link src=/etc/nginx/sites-available/default.conf
   notify:
-   - reload nginx
+   - restart nginx
 
 
 - name: Copy nginx configuration for hello world
-  template: src=index.hmtl dest=/var/www/web/index.hmtl
+  template: src=index.html dest=/var/www/web/index.html
   notify:
-   - reload nginx
+   - restart nginx
 
 - name: insert firewalld rule for nginx
   firewalld: port={{ nginx_port }}/tcp permanent=true state=enabled immediate=yes
