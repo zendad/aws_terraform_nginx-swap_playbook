@@ -1,9 +1,9 @@
 ---
 - name: Install Nginx and Configure swap space
   hosts: localhost
-  remote_user: root
+  remote_user: centos
   # remote_user: user
-  # sudo: yes
+  sudo: yes
 
   roles:
     - nginx
