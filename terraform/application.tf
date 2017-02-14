@@ -109,7 +109,7 @@ resource "aws_autoscaling_group" "app_autoscaling_group" {
 }
 
 resource "aws_launch_configuration" "app_launch_configuration" {
-    image_id = "ami-f9dd458a" # HVM (SSD) EBS-Backed 64-bit
+    image_id = "ami-21fba144" # HVM (SSD) EBS-Backed 64-bit
     instance_type = "t2.nano"
     security_groups = ["${aws_security_group.app_security_group.id}"]
     associate_public_ip_address = true

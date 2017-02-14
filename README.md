@@ -1,10 +1,24 @@
-# Install Nginx and configure swap on AWS ec2 using ansible and terraform
+# Setup AWS ec2 instances using terraform
 
 ### Requirements:
 
 - Terraform
-- Ansible
 - AWS access
+
+##Installing terraform
+
+Go to `https://terraform.io/downloads.html` and select the package corresponding to your OS.
+`$ wget https://releases.hashicorp.com/terraform/0.6.6/terraform_0.6.6_linux_amd64.zip`
+`$ unzip terraform_0.6.6_linux_amd64.zip -d whatever.directory.you.wish`
+
+Add the directory where the unzipped contents are located to your PATH variable.
+
+In Unix-based systems, this can be edited by opening ` ~/.bashrc` using your favorite editor, and adding the line `PATH=$PATH:<filepath>.`
+In Windows, this is done by opening up Windows Explorer, right clicking on This PC, and selecting Properties -> Advanced System Settings -> Environment Variables. Select PATH and choose edit. Append the directory to the end of the path variable WITHOUT spaces.
+Reload or open a new terminal so the update to your PATH is recognized.
+
+Last, verify your install was successful:
+`$ terraform -v`
 
 ### Tools Used:
 Before using the terraform, we need to export `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as environment variables:
@@ -30,18 +44,5 @@ To destroy Terraform-managed infrastructure:
 terraform destroy
 ```
 **Note**: Terraform stores the state of the managed infrastructure from the last time Terraform was run. Terraform uses the state to create plans and make changes to the infrastructure.
-
-### Ansible Role after Terraform Provisioning:
-
-Once the Terraform will create all the resources over AWS, you can use the Ansible to install nginx and setup swap space
-
-### To use the provided Role:
-```shell
-ansible-playbook site-swap.yml
-```
-or use this command if you are using on multiple hosts
-```shell
-ansible-playbook -i hosts site-swap.yml
-```
 
 

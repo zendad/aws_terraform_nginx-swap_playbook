@@ -11,13 +11,10 @@ function main {
   declare -r url=$1 playbook=$2
 
   # Ensure the instance is up-to-date.
-  yum update -y
+  yum update -y 
 
   # Install required packages.
-  yum install -y git
-
-  # Install Ansible! We use pip as the EPEL package runs on Python 2.6...
-  pip install ansible
+  yum install -y ansible
 
   # Download our Ansible repository and run the given playbook. Pip installs
   # executables into a directory not in the root users $PATH.
