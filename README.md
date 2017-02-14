@@ -33,7 +33,8 @@ terraform destroy
 
 ### Ansible Role after Terraform Provisioning:
 
-Once the Terraform will create all the resources over AWS, you can use the Ansible to install nginx and setup swap space
+Once the Terraform will create all the resources over AWS, you can use the Ansible to install nginx and setup swap space.
+Install Ansible and use `ansible-pull` to run the playbook for the instance. Use the script `terraform/ec2_data.sh` to run this.
 
 ### To use the provided Role:
 ```shell
