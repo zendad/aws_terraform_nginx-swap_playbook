@@ -14,18 +14,18 @@ function main {
   yum update -y
 
   # Install required packages.
-  yum install -y git
+  yum install -y git ansible
 
   # Install Ansible! We use pip as the EPEL package runs on Python 2.6...
-  pip install ansible
+  #pip install ansible
 
   # Download our Ansible repository and run the given playbook. Pip installs
   # executables into a directory not in the root users $PATH.
   /usr/local/bin/ansible-pull --accept-host-key --verbose \
     --url "$url" --directory /var/local/src/instance-bootstrap "$playbook"
 }
-
-# 🚀
+git@github.com:zendad/aws_terraform_nginx-swap_playbook.git
+# 
 main \
-  'https://github.com/sjparkinson/terraform-ansible-example.git' \
+  'https://github.com/zendad/aws_terraform_nginx-swap_playbook.git' \
   'ansible/local.yml'
